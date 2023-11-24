@@ -1,5 +1,5 @@
 import dearpygui.dearpygui as dpg
-from common_functions import arvuta, sync_fields
+from common_functions import arvuta, sync_fields, puhastaja_profit_calculator
 
 def create_profit_calculator(width, height, offset_y):
     with dpg.window(label="Profit Calculator", width=width, height=height, pos=(0, offset_y)):
@@ -27,13 +27,8 @@ def create_profit_calculator(width, height, offset_y):
         dpg.add_input_float(tag="myygikulu", step=0.01, step_fast=0.1, callback=sync_fields, user_data="sellcost")
 
         dpg.add_button(label="Calculate", callback=arvuta)
-        
-        dpg.add_text("Total Cost: ")
-        dpg.add_text("", tag="print_kogukulu")
-        dpg.add_text("Profit: ")
-        dpg.add_text("", tag="print_kasum")
-        dpg.add_text("Transaction Cost: ")
-        dpg.add_text("", tag="print_kulu")
-        dpg.add_text("Breakeven: ")
-        dpg.add_text("", tag="print_breakeven")
+        dpg.add_button(label="Clear", callback=puhastaja_profit_calculator)
+
+        dpg.add_text("Results:\n", tag="results_label_profit_calculator")
+        dpg.add_text("", tag="results_profit_output")
         pass

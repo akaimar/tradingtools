@@ -14,5 +14,5 @@ def create_rule_calculator(width, height, offset_x, offset_y):
         dpg.add_button(label="Calculate", callback=arvutaja)
         dpg.add_button(label="Clear", callback=puhastaja)
         dpg.add_text("Results:\n", tag="results_label")
-        dpg.add_text("", tag="results_output")
+        dpg.add_text("", tag="results_rule_output")
         pass

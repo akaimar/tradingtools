@@ -15,10 +15,10 @@ def arvuta(sender, app_data, user_data):
     kasum = round(((c * d) - (a * b)) - kulu, 2)
     breakeven = 0 if b == 0 else round((kulu / b) + a, 2)
 
-    dpg.set_value("print_kogukulu", float(kogukulu))
-    dpg.set_value("print_kasum", float(kasum))
-    dpg.set_value("print_kulu", float(kulu))
-    dpg.set_value("print_breakeven", float(breakeven))
+    results_profit_calculator = f"Trade cost: {round(kogukulu, 2)}\nKasum: {round(kasum, 2)}\nTehingukulu: {round(kulu, 2)}\n" \
+              f"Breakeven price: {round(breakeven, 2)}"
+    
+    dpg.set_value("results_profit_output", results_profit_calculator)
     pass
 
 def arvutaja(sender, app_data, user_data):
@@ -41,12 +41,12 @@ def arvutaja(sender, app_data, user_data):
     potential_grossprofit = shares_to_buy * profit_per_share
     potential_netprofit = potential_grossprofit - buycost - sellcost
 
-    results = f"Capital: {round(capital, 2)}\nRisk Amount: {round(risk_amount, 2)}\nRisk per Share: {round(risk_per_share, 2)}\n" \
+    results_rule_calculator = f"Capital: {round(capital, 2)}\nRisk Amount: {round(risk_amount, 2)}\nRisk per Share: {round(risk_per_share, 2)}\n" \
               f"Profit per Share: {round(profit_per_share, 2)}\nRisk Reward: {round(risk_reward, 3)}\nShares to Buy: {round(shares_to_buy, 2)}\n" \
               f"Investment: {round(investment, 2)}\nAllowed Max Loss: {round(potential_loss, 2)}\nPotential Gross Profit: {round(potential_grossprofit, 2)}\n" \
               f"Potential Net Profit: {round(potential_netprofit, 2)}"
     
-    dpg.set_value("results_output", results)
+    dpg.set_value("results_rule_output", results_rule_calculator)
     pass
 
 def puhastaja(sender, app_data, user_data):
@@ -59,6 +59,16 @@ def puhastaja(sender, app_data, user_data):
     dpg.set_value("buycost", 0)
     dpg.set_value("sellcost", 0)
     dpg.set_value("results_output", "Enter data!")
+    pass
+
+def puhastaja_profit_calculator(sender, app_data, user_data):
+    dpg.set_value("ticker", "")
+    dpg.set_value("ostuhind", 0)
+    dpg.set_value("ostukogus", 0)
+    dpg.set_value("myygihind", 0)
+    dpg.set_value("myygikogus", 0)
+    dpg.set_value("ostukulu", 0)
+    dpg.set_value("myygikulu", 0)
     pass
 
 def sync_fields(sender, app_data, user_data):
