@@ -21,7 +21,7 @@ def main():
     viewport_width = top_window_width
     viewport_height = top_window_height + side_window_height
 
-    dpg.create_viewport(title='Tradertools.com', width=viewport_width, height=viewport_height)
+    dpg.create_viewport(title='kauplejariist.com - tööriist kauplejale', width=viewport_width, height=viewport_height)
     dpg.setup_dearpygui()
     dpg.show_viewport()
     dpg.start_dearpygui()
